@@ -1,0 +1,1 @@
+This repository documents coding conducted by Moritz Mühlbauer for the Masters Thesis 'Mapping Surface Urban Heat Island intensity and the influence of urbanization and heatwaves through Local Climate Zone mapping  Tallinn - 2014 and 2022'
