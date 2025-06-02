@@ -18,7 +18,40 @@
 - the main final rasterized outputs are: **Built fraction**, **Mean Building Height** and **Dominant Landcover**
 - all vector datasets are aggregated to 30 meters Landsat 8 resolution to ensure further combined processing
 
-### Relevant coding highlights 
+### Relevant coding highlights
+
+def calculate_built_fraction(buildings, grid):
+
+```python
+    """
+    Calculates the percentage of built-up area per 30x30 m grid cell.
+
+    Performs a spatial intersection between buildings and grid cells,
+    sums the intersected areas per cell, and computes the built-up
+    fraction as a percentage. Results are saved to a GeoPackage.
+
+    Parameters:
+        buildings (GeoDataFrame): Building footprint geometries.
+        grid (GeoDataFrame): Grid with a 'grid_id' column.
+
+    Returns:
+        GeoDataFrame: Grid with an added 'built_fraction' column.
+    """
+    
+    intersection = grid.overlay(buildings, how="intersection")
+    # calculating the area of the intersect building fraction per grid cell
+    intersection["fraction_area"] = intersection["geometry"].area
+    # grouping by grid cell id and summing up the fraction area on the fly
+    grouped = intersection.groupby("grid_id")["fraction_area"].sum().reset_index()
+    # calculating built fraction on previuosly summed building area per grid cell (900 due to 30x30 resolution)
+    grouped["built_fraction"] = ((grouped["fraction_area"] / 900) * 100).round().astype(int)
+    # merging grouped DataFrame to grid to create GeoDataFrame
+    built_fraction = grid.merge(grouped, on="grid_id", how="inner")
+
+    built_fraction.to_file(BUILT_FRACTION_DIRECTORY / "built_fraction.gpkg")
+
+    return built_fraction
+```
 
 ## Satellite Imagery selection, spectral indices calculation and LST extraction 
 
