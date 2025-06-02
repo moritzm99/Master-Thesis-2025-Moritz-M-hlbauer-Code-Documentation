@@ -247,6 +247,21 @@ def safe_gpkg(transportation, as_with_veg, as_without_veg, ns_without_veg, ns_wi
 
 # function to calculate the built fraction per 30x30 m grid cell
 def calculate_built_fraction(buildings, grid):
+
+    """
+    Calculates the percentage of built-up area per 30x30 m grid cell.
+
+    Performs a spatial intersection between buildings and grid cells,
+    sums the intersected areas per cell, and computes the built-up
+    fraction as a percentage. Results are saved to a GeoPackage.
+
+    Parameters:
+        buildings (GeoDataFrame): Building footprint geometries.
+        grid (GeoDataFrame): Grid with a 'grid_id' column.
+
+    Returns:
+        GeoDataFrame: Grid with an added 'built_fraction' column.
+    """
     
     intersection = grid.overlay(buildings, how="intersection")
     # calculating the area of the intersect building fraction per grid cell
