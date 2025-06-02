@@ -7,6 +7,10 @@
 - based on the LCZ, the `Surface Urban Heat Island` (SUHI) intensity is estimated with Landsat 8 land surface temperature (LST)
 
 ## Requirements
+
+- Conda/Micromamba environment
+- Google Earth Engine account. Sign-up instructions here[https://courses.spatialthoughts.com/gee-sign-up.html]
+- Prior to using the Earth Engine Python client library, you need to authenticate (verify your identity) and use the resultant credentials to initialize the Python client. Instructions here[https://developers.google.com/earth-engine/guides/python_install?hl=de]
 ### Step 0:
 - a working package/file/environment manager like anaconda/miniconda or micromamba with a Python > 3 installation:
   - refer to the Archipelagos GIS Google Drive (contact Tim Grandjean for access [here](mailto:t.grandjean@archipelago.gr)) or get instructions directly from the providers:
