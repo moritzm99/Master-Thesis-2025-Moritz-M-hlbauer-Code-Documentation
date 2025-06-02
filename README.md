@@ -1,9 +1,10 @@
-This repository documents coding conducted by Moritz Mühlbauer for the Masters Thesis 'Mapping Surface Urban Heat Island intensity and the influence of urbanization and heatwaves through Local Climate Zone mapping  Tallinn - 2014 and 2022'
-# Hot-Spot Analysis and data visualization with `Copernicus Marine Toolbox`
+ # Heatwave-sensitive multi-temporal Local Climate Zone mapping in Tallinn
 
-- this repository was mainly created for `Archipelagos` interns to maintain data harvesting from `Copernicus Ocean Products` for marine research purposes
-- this is a 'from scratch guide' starting from anaconda installation and copernicus API setup to more sophisticated data querying and visualization
-- expected runtime on a 32 GB RAM machine: ~6 min
+- this repository was created to document a workflow established by Moritz Mühlbauer as part of the Master's Thesis `Mapping Surface Urban Heat Island intensity and the influence of urbanization and heatwaves through Local Climate Zone mapping Tallinn - 2014 and 2022` at the University of Tartu in 2025
+- to support training area selection for supervised classification, building and landcover vector data are aggregated to `Local Climate Zone` (LCZ) relevant metrices
+- to further improve the understanding of the study areas urban morphology, spectral indices from Landsat 8 satellite imagery are incorporated and combined with vector data
+- the supervised classification into LCZ is conducted using an updated workflow established by Demuzere (2020)
+- based on the LCZ, the `Surface Urban Heat Island` (SUHI) intensity is estimated with Landsat 8 land surface temperature (LST)
 
 ## Requirements
 ### Step 0:
