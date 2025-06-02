@@ -23,6 +23,7 @@
 def calculate_built_fraction(buildings, grid):
 
 ```python
+def calculate_built_fraction(buildings, grid):
     """
     Calculates the percentage of built-up area per 30x30 m grid cell.
 
