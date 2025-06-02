@@ -52,6 +52,48 @@ def calculate_built_fraction(buildings, grid):
     return built_fraction
 ```
 
+```python
+def find_dominant_landcover(landcover, grid):
+    """
+    Identifies the dominant land cover type within each 30x30 m grid cell.
+
+    Intersects land cover polygons with grid cells, calculates area per 
+    land cover type within each cell, and selects the type with the 
+    largest area as dominant. Results are saved to a GeoPackage.
+
+    Parameters:
+        landcover (GeoDataFrame): Land cover polygons with a 'raster_code' column.
+        grid (GeoDataFrame): Grid with a 'grid_id' column.
+
+    Returns:
+        GeoDataFrame: Grid with an added 'raster_code' column indicating 
+                      the dominant land cover type per cell.
+    """
+    
+    # intersection between grid and landcover
+    landcover_intersect = grid.overlay(landcover, how="intersection")
+
+    # Calculate area of clipped land use per grid cell
+    landcover_intersect["dominant_area"] = landcover_intersect.geometry.area
+
+    # Group by grid cell and land use type, summing areas
+    landcover_areas = landcover_intersect.groupby(["grid_id", "raster_code"])["dominant_area"].sum().reset_index()
+
+    # Select the dominant land use (largest area per grid cell)
+    dominant_landcover = landcover_areas.loc[landcover_areas.groupby("grid_id")["dominant_area"].idxmax()]
+
+    # Merge with grid
+    landcover_grid_dominant_area = grid.merge(
+        dominant_landcover[["grid_id", "raster_code"]],
+        on="grid_id",  # Merging on the grid ID column
+        how="inner"  # Only keep matching grid cells
+    )
+    
+    landcover_grid_dominant_area.to_file(DOMINANT_LANDCOVER_DIRECTORY / 'landcover_grid_dominant_area.gpkg')
+    
+    return landcover_grid_dominant_area
+```
+
 ## Satellite Imagery selection, spectral indices calculation and LST extraction 
 
 
