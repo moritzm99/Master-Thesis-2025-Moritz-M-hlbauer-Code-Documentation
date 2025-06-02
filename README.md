@@ -20,8 +20,6 @@
 
 ### Relevant coding highlights
 
-def calculate_built_fraction(buildings, grid):
-
 ```python
 def calculate_built_fraction(buildings, grid):
     """
