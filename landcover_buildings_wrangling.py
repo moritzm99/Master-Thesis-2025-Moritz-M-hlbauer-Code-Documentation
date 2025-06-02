@@ -281,6 +281,22 @@ def calculate_built_fraction(buildings, grid):
     
 # function to find dominant landcover per 30x30 m grid cell
 def find_dominant_landcover(landcover, grid):
+    """
+    Identifies the dominant land cover type within each 30x30 m grid cell.
+
+    Intersects land cover polygons with grid cells, calculates area per 
+    land cover type within each cell, and selects the type with the 
+    largest area as dominant. Results are saved to a GeoPackage.
+
+    Parameters:
+        landcover (GeoDataFrame): Land cover polygons with a 'raster_code' column.
+        grid (GeoDataFrame): Grid with a 'grid_id' column.
+
+    Returns:
+        GeoDataFrame: Grid with an added 'raster_code' column indicating 
+                      the dominant land cover type per cell.
+    """
+    
     # intersection between grid and landcover
     landcover_intersect = grid.overlay(landcover, how="intersection")
 
