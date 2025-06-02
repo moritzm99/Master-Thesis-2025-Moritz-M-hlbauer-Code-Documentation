@@ -247,7 +247,6 @@ def safe_gpkg(transportation, as_with_veg, as_without_veg, ns_without_veg, ns_wi
 
 # function to calculate the built fraction per 30x30 m grid cell
 def calculate_built_fraction(buildings, grid):
-
     """
     Calculates the percentage of built-up area per 30x30 m grid cell.
 
@@ -324,6 +323,21 @@ def find_dominant_landcover(landcover, grid):
 
 # function to calculate mean building height per 30x30 m grid cell
 def calculate_mean_building_height(buildings, grid):
+    """
+    Calculates the mean building height within each 30x30 m grid cell.
+
+    Intersects building footprints with the grid, computes the average height 
+    of buildings per cell, and merges the result back to the grid. The output 
+    is saved as a GeoPackage.
+
+    Parameters:
+        buildings (GeoDataFrame): Building footprints with a 'height' column.
+        grid (GeoDataFrame): Grid with a 'grid_id' column.
+
+    Returns:
+        GeoDataFrame: Grid with an added 'height' column representing the 
+                      mean building height (rounded to the nearest integer).
+    """
     
     grid_buildings_intersection = grid.overlay(buildings, how="intersection")
     mean_building_height_grouped = grid_buildings_intersection.groupby(["grid_id"])["height"].mean().reset_index()
