@@ -47,8 +47,6 @@ def calculate_built_fraction(buildings, grid):
     # merging grouped DataFrame to grid to create GeoDataFrame
     built_fraction = grid.merge(grouped, on="grid_id", how="inner")
 
-    built_fraction.to_file(BUILT_FRACTION_DIRECTORY / "built_fraction.gpkg")
-
     return built_fraction
 ```
 
@@ -72,28 +70,50 @@ def find_dominant_landcover(landcover, grid):
     
     # intersection between grid and landcover
     landcover_intersect = grid.overlay(landcover, how="intersection")
-
     # Calculate area of clipped land use per grid cell
     landcover_intersect["dominant_area"] = landcover_intersect.geometry.area
-
     # Group by grid cell and land use type, summing areas
     landcover_areas = landcover_intersect.groupby(["grid_id", "raster_code"])["dominant_area"].sum().reset_index()
-
     # Select the dominant land use (largest area per grid cell)
     dominant_landcover = landcover_areas.loc[landcover_areas.groupby("grid_id")["dominant_area"].idxmax()]
-
     # Merge with grid
     landcover_grid_dominant_area = grid.merge(
         dominant_landcover[["grid_id", "raster_code"]],
         on="grid_id",  # Merging on the grid ID column
         how="inner"  # Only keep matching grid cells
     )
-    
-    landcover_grid_dominant_area.to_file(DOMINANT_LANDCOVER_DIRECTORY / 'landcover_grid_dominant_area.gpkg')
-    
+        
     return landcover_grid_dominant_area
 ```
 
+```python
+def calculate_mean_building_height(buildings, grid):
+    """
+    Calculates the mean building height within each 30x30 m grid cell.
+
+    Intersects building footprints with the grid, computes the average height 
+    of buildings per cell, and merges the result back to the grid. The output 
+    is saved as a GeoPackage.
+
+    Parameters:
+        buildings (GeoDataFrame): Building footprints with a 'height' column.
+        grid (GeoDataFrame): Grid with a 'grid_id' column.
+
+    Returns:
+        GeoDataFrame: Grid with an added 'height' column representing the 
+                      mean building height (rounded to the nearest integer).
+    """
+    # Intersect buildings with grid to assign buildings to grid cells
+    grid_buildings_intersection = grid.overlay(buildings, how="intersection")
+    # Calculate mean height of buildings per grid cell
+    mean_building_height_grouped = grid_buildings_intersection.groupby(["grid_id"])["height"].mean().reset_index()
+    # Merge mean height values back into the original grid
+    mean_building_height = grid.merge(mean_building_height_grouped, on="grid_id", how="inner")
+    # Round heights to the nearest integer for cleaner representation
+    mean_building_height["height"] = mean_building_height["height"].round().astype(int)
+
+    return mean_building_height
+```
 ## Satellite Imagery selection, spectral indices calculation and LST extraction 
 
 
