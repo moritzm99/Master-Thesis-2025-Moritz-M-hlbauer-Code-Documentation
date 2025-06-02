@@ -8,7 +8,7 @@
 
 ## Requirements
 
-- Conda/Micromamba environment. Instruction [here](https://www.anaconda.com/download) and [here](https://mamba.readthedocs.io/en/latest/installation/micromamba-installation.html)
+- Conda/Micromamba environment. Instruction [here](https://www.anaconda.com/download) and [here](https://mamba.readthedocs.io/en/latest/installation/micromamba-installation.html). Install the necessary libraries from `requirements.yml` 
 - Google Earth Engine account. Sign-up instructions [here](https://courses.spatialthoughts.com/gee-sign-up.html)
 - Prior to using the Earth Engine Python client library, you need to authenticate (verify your identity) and use the resultant credentials to initialize the Python client. Instructions [here](https://developers.google.com/earth-engine/guides/python_install?hl=de)
 
