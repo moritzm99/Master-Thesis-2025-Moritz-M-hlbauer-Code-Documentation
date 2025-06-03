@@ -312,5 +312,5 @@ Canadian functional urban areas. https://doi.org/10.31219/OSF.IO/H5TM6
 American Meteorological Society, 93(12), 1879–1900. https://doi.org/10.1175/BAMS-D-11-00019.1
 - TLV. (n.d.). Tallinn Geoportal. Retrieved 26 May 2025, from https://www.tallinn.ee/et/geoportaal/ruumi-
 andmed
--Žgela, M., Herceg-Bulić, I., Lozuk, J., & Jureša, P. (2024). Linking land surface temperature and local cli-
+- Žgela, M., Herceg-Bulić, I., Lozuk, J., & Jureša, P. (2024). Linking land surface temperature and local cli-
 mate zones in nine Croatian cities. Urban Climate, 54. https://doi.org/10.1016/J.UCLIM.2024.101842
