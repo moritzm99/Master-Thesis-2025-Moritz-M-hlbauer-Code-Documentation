@@ -179,14 +179,14 @@ def create_maps_from_collections(collections_by_year, vis_params, boundary):
 
 ## Local Climate Zone supervised classification
 
-- for multi-temporal LCZ classification, access the full WUDAPT created by Demuzere (2020) and updated by Mühlbauer (2025) [here]()
+- for multi-temporal LCZ classification, access the full WUDAPT created by Demuzere (2020) and updated by Mühlbauer (2025) [here](https://github.com/matthiasdemuzere/multitemporal-lcz-mapping)
 
 ## Surface Urban Heat Island Intensity estimation 
 
 - the SUHI itensity is estimated as the difference of the mean LST of a given LCZ with the means LST of the reference zone LCZ D/14 (low plants)
 - the processing of Landsat 8 LST and the LCZ classification to obtain SUHI as thermal LCZ-LST difference is conducted using `SUHII.ipynb`
 
-## Relevant Coding Highlights
+### Relevant Coding Highlights
 
 - SUHI intensity estimation from reference zone:
 
