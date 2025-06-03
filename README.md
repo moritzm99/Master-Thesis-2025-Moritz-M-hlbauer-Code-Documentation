@@ -303,13 +303,14 @@ transitions[~changed] = 0  # or np.nan
 
 ## Relevant References
 
-### Copernicus Marine Ocean Products
-
-- access the Copernicus Marine Data Storage and find data compatible with this script [here](https://data.marine.copernicus.eu/products)
-- explore quality of Copernicus Marine Data [here](https://pqd.mercator-ocean.fr/?pk_vid=161106812679b150)
-
-### Complementary 
-
-- read about xarray [here](https://docs.xarray.dev/en/stable/getting-started-guide/installing.html)
-- watch a video about Hot-Spot Anylsis [here](https://www.youtube.com/watch?v=sjLyJW95fHM)
-- learn about geospatial Python [here](https://geog-312.gishub.org)
+- Demuzere, M., Kittner, J., & Bechtel, B. (2021). LCZ Generator: A Web Application to Create Local Cli-
+mate Zone Maps. FRONTIERS IN ENVIRONMENTAL SCIENCE, 9.
+https://doi.org/10.3389/fenvs.2021.637455
+- Demuzere, M., Mihara, T., Redivo, C. P., Feddema, J., & Setton, E. (2020). Multi-temporal LCZ maps for
+Canadian functional urban areas. https://doi.org/10.31219/OSF.IO/H5TM6
+- Stewart, I. D., & Oke, T. R. (2012). Local Climate Zones for Urban Temperature Studies. Bulletin of the
+American Meteorological Society, 93(12), 1879–1900. https://doi.org/10.1175/BAMS-D-11-00019.1
+- TLV. (n.d.). Tallinn Geoportal. Retrieved 26 May 2025, from https://www.tallinn.ee/et/geoportaal/ruumi-
+andmed
+-Žgela, M., Herceg-Bulić, I., Lozuk, J., & Jureša, P. (2024). Linking land surface temperature and local cli-
+mate zones in nine Croatian cities. Urban Climate, 54. https://doi.org/10.1016/J.UCLIM.2024.101842
