@@ -219,6 +219,27 @@ def calculate_SUHII(LCZ, LST, nodata_lcz=None, nodata_lst=None, lcz_d_code=14):
     return SUHII, mean_lst, mean_d, mask
 ```
 
+- Quantify urbanization from LCZ area:
+
+```python
+def calculate_lcz_areas(lcz_path, class_range=range(1, 11)):
+    with rasterio.open(lcz_path) as src:
+        lcz = src.read(1)
+        transform = src.transform
+        pixel_area = abs(transform.a * transform.e)
+        nodata = src.nodata
+
+    if nodata is not None:
+        lcz = lcz[lcz != nodata]
+
+    mask = np.isin(lcz, class_range)
+    lcz_filtered = lcz[mask]
+
+    unique, counts = np.unique(lcz_filtered, return_counts=True)
+    areas_km2 = counts * pixel_area / 1e6
+
+    return dict(zip(unique, areas_km2))
+```
 #### **3. Select the `Copernicus Marine Toolbox` Kernel in the right upper corner of your browser window inside the IDE:**
 
 <img src="images/explain1.png" alt="Description" width="400"/>      <img src="images/explain2.png" alt="Description" width="400"/>
