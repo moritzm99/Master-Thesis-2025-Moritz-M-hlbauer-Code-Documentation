@@ -240,6 +240,52 @@ def calculate_lcz_areas(lcz_path, class_range=range(1, 11)):
 
     return dict(zip(unique, areas_km2))
 ```
+
+- Calculate area of SUHI by intensity class:
+
+```python
+def calculate_suhi_area_by_class(suhi_path, pixel_area_km2=0.0009):
+    """
+    Calculate SUHI area in km² for defined intensity ranges from a raster file.
+
+    Intensity classes:
+    1. (0–2]
+    2. (2–4]
+    3. (4–6]
+    4. (6–8]
+    5. >8
+
+    Parameters:
+    - suhi_path (str): Path to SUHI raster file
+    - pixel_area_km2 (float): Area of a single pixel in km²
+
+    Returns:
+    - dict: Area in km² for each SUHI intensity class
+    """
+    with rasterio.open(suhi_path) as src:
+        suhi_array = src.read(1)
+        nodata = src.nodata
+
+    # Mask out nodata values
+    if nodata is not None:
+        suhi_array = suhi_array.astype(np.float32)
+        suhi_array[suhi_array == nodata] = np.nan
+
+    classes = {
+        "1: >0–2": (suhi_array > 0) & (suhi_array <= 2),
+        "2: >2–4": (suhi_array > 2) & (suhi_array <= 4),
+        "3: >4–6": (suhi_array > 4) & (suhi_array <= 6),
+        "4: >6–8": (suhi_array > 6) & (suhi_array <= 8),
+        "5: >8": (suhi_array > 8)
+    }
+
+    area_by_class = {
+        label: np.sum(mask) * pixel_area_km2
+        for label, mask in classes.items()
+    }
+
+    return area_by_class
+```
 #### **3. Select the `Copernicus Marine Toolbox` Kernel in the right upper corner of your browser window inside the IDE:**
 
 <img src="images/explain1.png" alt="Description" width="400"/>      <img src="images/explain2.png" alt="Description" width="400"/>
