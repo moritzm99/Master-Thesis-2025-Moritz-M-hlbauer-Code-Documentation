@@ -14,7 +14,7 @@
 
 ## Buildings and Landcover Processing
 
-- the buildings and landcover processing can be executed running `?` with `?` containing the helper functions
+- the buildings and landcover processing can be executed running `landcover_buildings_analysis.ipynb` with `landcover_buidings_wrangling.py` containing the helper functions
 - the main final rasterized outputs are: **Built fraction**, **Mean Building Height** and **Dominant Landcover**
 - all vector datasets are aggregated to 30 meters Landsat 8 resolution to ensure further combined processing
 
