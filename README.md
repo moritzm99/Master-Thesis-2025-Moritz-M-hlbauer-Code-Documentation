@@ -191,7 +191,32 @@ def create_maps_from_collections(collections_by_year, vis_params, boundary):
 - SUHI intensity estimation from reference zone:
 
 ```python
+def calculate_SUHII(LCZ, LST, nodata_lcz=None, nodata_lst=None, lcz_d_code=14):
+    
+    # creating a mask of valid data
+    mask = (~np.isnan(LST)) & (~np.isnan(LCZ))
+    if nodata_lst is not None:
+        mask &= (LST != nodata_lst)
+    if nodata_lcz is not None:
+        mask &= (LCZ != nodata_lcz)
 
+    # Also exclude LCZ == 0
+    mask &= (LCZ != 0)
+
+    # Flatten for DataFrame
+    df = pd.DataFrame({
+        'LCZ': LCZ[mask].astype(int),
+        'LST': LST[mask]
+    })
+
+    mean_lst = df.groupby('LCZ')['LST'].mean()
+    mean_d = mean_lst[lcz_d_code]
+
+    SUHII = np.full_like(LST, np.nan, dtype=np.float32)
+    for lcz_class in mean_lst.index:
+        SUHII[LCZ == lcz_class] = mean_lst[lcz_class] - mean_d
+
+    return SUHII, mean_lst, mean_d, mask
 ```
 
 #### **3. Select the `Copernicus Marine Toolbox` Kernel in the right upper corner of your browser window inside the IDE:**
