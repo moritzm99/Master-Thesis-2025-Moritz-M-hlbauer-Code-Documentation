@@ -114,7 +114,40 @@ def calculate_mean_building_height(buildings, grid):
 
     return mean_building_height
 ```
-## Satellite Imagery selection, spectral indices calculation and LST extraction 
+## Satellite Imagery selection, spectral indices calculation and LST extraction
+
+- image selection of Landsat 8 images for spectral indices calculation (*NDBI*, *NDVI* and *NDWI*) and LST extraction for heatwave and non-heatwave days with `extract_spectral_indices.ipynb`
+- heatwave days are identified through maximum daily air temperature with functions contained in `data_wrangling.py` and `01_JSONfromHTML_v2.ipynb` for accessing meteorological data from Estonian Weather Agency API
+
+- heatwave identification using threshold of >27 °C for three consecutive days:
+
+```python
+
+```
+
+- visual screening of satellite imagery for no cloud-cover and full study area coverage of Tallinn municipality:
+```python
+def create_maps_from_collections(collections_by_year, vis_params, boundary):
+    maps = {}
+
+    for year, collection_list in collections_by_year.items():
+        # Create a new interactive map
+        map_selection = geemap.Map(center=[59.430752, 24.751965], zoom=11)
+
+        # Iterate over image list and add to map
+        for i in range(collection_list.size().getInfo()):
+            image = ee.Image(collection_list.get(i))
+            label = f"{image.get('DATE_ACQUIRED').getInfo()} / list position: {i}"
+            map_selection.add_layer(image, vis_params, label)
+
+        # Add boundary overlay
+        map_selection.add_layer(boundary, {}, "Boundary")
+
+        # Store map
+        maps[year] = map_selection
+
+    return maps
+```
 
 
 #### **3. Select the `Copernicus Marine Toolbox` Kernel in the right upper corner of your browser window inside the IDE:**
