@@ -119,6 +119,8 @@ def calculate_mean_building_height(buildings, grid):
 - image selection of Landsat 8 images for spectral indices calculation (*NDBI*, *NDVI* and *NDWI*) and LST extraction for heatwave and non-heatwave days with `extract_spectral_indices.ipynb`
 - heatwave days are identified through maximum daily air temperature with functions contained in `data_wrangling.py` and `01_JSONfromHTML_v2.ipynb` for accessing meteorological data from Estonian Weather Agency API
 
+### Relevant Coding Highlights
+
 - heatwave identification using threshold of >27 °C for three consecutive days:
 
 ```python
@@ -175,6 +177,22 @@ def create_maps_from_collections(collections_by_year, vis_params, boundary):
     return maps
 ```
 
+## Local Climate Zone supervised classification
+
+- for multi-temporal LCZ classification, access the full WUDAPT created by Demuzere (2020) and updated by Mühlbauer (2025) [here]()
+
+## Surface Urban Heat Island Intensity estimation 
+
+- the SUHI itensity is estimated as the difference of the mean LST of a given LCZ with the means LST of the reference zone LCZ D/14 (low plants)
+- the processing of Landsat 8 LST and the LCZ classification to obtain SUHI as thermal LCZ-LST difference is conducted using `SUHII.ipynb`
+
+## Relevant Coding Highlights
+
+- SUHI intensity estimation from reference zone:
+
+```python
+
+```
 
 #### **3. Select the `Copernicus Marine Toolbox` Kernel in the right upper corner of your browser window inside the IDE:**
 
