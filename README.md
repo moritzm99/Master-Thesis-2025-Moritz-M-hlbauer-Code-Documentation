@@ -14,7 +14,7 @@
 
 ## Urbanization and heat waves: Impacts on urban climate
 
-<img src="Images/background.png" alt="Description" width="900"/>
+<img src="Images/background.png" alt="Description" width="1000"/>
 
 ## Buildings and Landcover Processing
 
