@@ -6,6 +6,13 @@
 - the supervised classification into LCZ is conducted using an updated workflow established by Demuzere (2020)
 - based on the LCZ, the `Surface Urban Heat Island` (SUHI) intensity is estimated with Landsat 8 land surface temperature (LST)
 
+## Abbreviations 
+
+- LCZ - Local CLimate Zone
+- UHI - Urban Heat Island
+- SUHI - Surface Urban Heat Island
+- LST - Land Surface Temperature
+
 ## Requirements
 
 - Conda/Micromamba environment. Instruction [here](https://www.anaconda.com/download) and [here](https://mamba.readthedocs.io/en/latest/installation/micromamba-installation.html). Install the necessary libraries from `requirements.yml` 
@@ -15,6 +22,14 @@
 ## Urbanization and heat waves: Impacts on urban climate
 
 <img src="Images/background.png" alt="Description" width="1000"/>
+
+## Data and methods
+
+<img src="Images/workflow.png" alt="Description" width="1000"/>
+
+## Reserch design 
+
+<img src="Images/rd.png" alt="Description" width="1000"/>
 
 ## Buildings and Landcover Processing
 
