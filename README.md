@@ -26,7 +26,14 @@
 - heatwaves exacerbate these effects, raising overall temperatures
 - these dynamics can be effectively capturedusing the LCZ framework
 
+
 <img src="Images/background.png" alt="Description" width="1000"/>
+
+
+
+## Research design 
+
+<img src="Images/rd.png" alt="Description" width="1000"/>
 
 
 
@@ -38,14 +45,10 @@
 - Anaysis:
   1. urbanization trends from 2014 to 2022
   2. SUHI intensity estimation for heatwave and non-heatwave days
+ 
 
 <img src="Images/workflow.png" alt="Description" width="1000"/>
 
-
-
-## Research design 
-
-<img src="Images/rd.png" alt="Description" width="1000"/>
 
 
 ## Buildings and land cover processing
