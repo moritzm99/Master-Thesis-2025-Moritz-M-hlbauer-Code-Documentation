@@ -34,15 +34,14 @@
 <img src="Images/rd.png" alt="Description" width="1000"/>
 
 
-## Buildings and Landcover Processing
+## Buildings and landcover processing
 
 - the buildings and landcover processing can be executed running `landcover_buildings_analysis.ipynb` with `landcover_buidings_wrangling.py` containing the helper functions
-- the main final rasterized outputs are: **Built fraction**, **Mean Building Height** and **Dominant Landcover**
 - all vector datasets are aggregated to 30 meters Landsat 8 resolution to ensure further combined processing
 
 ### Main processing functions
 
-Built fraction
+**Built fraction**
 
 ```python
 def calculate_built_fraction(buildings, grid):
@@ -73,7 +72,7 @@ def calculate_built_fraction(buildings, grid):
 
     return built_fraction
 ```
-Dominant landcover
+**Dominant landcover**
 
 ```python
 def find_dominant_landcover(landcover, grid):
@@ -110,7 +109,7 @@ def find_dominant_landcover(landcover, grid):
         
     return landcover_grid_dominant_area
 ```
-Mean building height
+**Mean building height**
 
 ```python
 def calculate_mean_building_height(buildings, grid):
