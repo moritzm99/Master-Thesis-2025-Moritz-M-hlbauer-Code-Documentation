@@ -50,7 +50,7 @@
 
 ## Buildings and land cover processing
 
-- the buildings and landcover processing can be executed running `landcover_buildings_analysis.ipynb` with `landcover_buidings_wrangling.py` containing the helper functions
+- Notebook: `landcover_buildings_analysis.ipynb`  Script: `landcover_buidings_wrangling.py`
 - all vector datasets are aggregated to 30 meters Landsat 8 resolution to ensure further combined processing
 
 ### Main processing functions
@@ -155,6 +155,7 @@ def calculate_mean_building_height(buildings, grid):
 ```
 ## Satellite Imagery selection, spectral indices calculation and LST extraction
 
+- 
 - image selection of Landsat 8 images for spectral indices calculation (*NDBI*, *NDVI* and *NDWI*) and LST extraction for heatwave and non-heatwave days with `extract_spectral_indices.ipynb`
 - heatwave days are identified through maximum daily air temperature with functions contained in `data_wrangling.py` and `01_JSONfromHTML_v2.ipynb` for accessing meteorological data from Estonian Weather Agency API
 
