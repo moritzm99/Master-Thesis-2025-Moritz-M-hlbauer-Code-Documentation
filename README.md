@@ -12,7 +12,11 @@
 - Google Earth Engine account. Sign-up instructions [here](https://courses.spatialthoughts.com/gee-sign-up.html)
 - Prior to using the Earth Engine Python client library, you need to authenticate (verify your identity) and use the resultant credentials to initialize the Python client. Instructions [here](https://developers.google.com/earth-engine/guides/python_install?hl=de)
 
+## Urbanization and heat waves: Impacts on urban climate
+
 ## Buildings and Landcover Processing
+
+<img src="images/background.png" alt="Description" width="400"/>
 
 - the buildings and landcover processing can be executed running `landcover_buildings_analysis.ipynb` with `landcover_buidings_wrangling.py` containing the helper functions
 - the main final rasterized outputs are: **Built fraction**, **Mean Building Height** and **Dominant Landcover**
