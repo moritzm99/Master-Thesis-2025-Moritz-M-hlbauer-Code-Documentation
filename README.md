@@ -19,17 +19,20 @@
 - Google Earth Engine account. Sign-up instructions [here](https://courses.spatialthoughts.com/gee-sign-up.html)
 - Prior to using the Earth Engine Python client library, you need to authenticate (verify your identity) and use the resultant credentials to initialize the Python client. Instructions [here](https://developers.google.com/earth-engine/guides/python_install?hl=de)
 
-## Urbanization and heat waves: Impacts on urban climate
+## Theoretical background
 
 <img src="Images/background.png" alt="Description" width="1000"/>
+
 
 ## Data and methods
 
 <img src="Images/workflow.png" alt="Description" width="1000"/>
 
-## Reserch design 
+
+## Research design 
 
 <img src="Images/rd.png" alt="Description" width="1000"/>
+
 
 ## Buildings and Landcover Processing
 
@@ -37,7 +40,9 @@
 - the main final rasterized outputs are: **Built fraction**, **Mean Building Height** and **Dominant Landcover**
 - all vector datasets are aggregated to 30 meters Landsat 8 resolution to ensure further combined processing
 
-### Relevant coding highlights
+### Main processing functions
+
+Built fraction
 
 ```python
 def calculate_built_fraction(buildings, grid):
@@ -68,6 +73,7 @@ def calculate_built_fraction(buildings, grid):
 
     return built_fraction
 ```
+Dominant landcover
 
 ```python
 def find_dominant_landcover(landcover, grid):
@@ -104,6 +110,7 @@ def find_dominant_landcover(landcover, grid):
         
     return landcover_grid_dominant_area
 ```
+Mean building height
 
 ```python
 def calculate_mean_building_height(buildings, grid):
