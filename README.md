@@ -21,12 +21,26 @@
 
 ## Theoretical background
 
+- built-up morphology raises both LST and SUHI intensity, whereas open or low-rise areas have a mitigating effect
+- vegetated land cover reduces, while paved or sealed surfaces increase LST and SUHIs
+- heatwaves exacerbate these effects, raising overall temperatures
+- these dynamics can be effectively capturedusing the LCZ framework
+
 <img src="Images/background.png" alt="Description" width="1000"/>
+
 
 
 ## Data and methods
 
+- customized workflow to pre-identify the LCZ-specific training area to support the supervised classification into LCZs
+- combination of Landsat 8 satellite images and building and land cover vector data
+- Result: LCZ maps representing the urban morphology of Tallinn in 2014 and 2022
+- Anaysis:
+  1. urbanization trends from 2014 to 2022
+  2. SUHI intensity estimation for heatwave and non-heatwave days
+
 <img src="Images/workflow.png" alt="Description" width="1000"/>
+
 
 
 ## Research design 
@@ -34,7 +48,7 @@
 <img src="Images/rd.png" alt="Description" width="1000"/>
 
 
-## Buildings and landcover processing
+## Buildings and land cover processing
 
 - the buildings and landcover processing can be executed running `landcover_buildings_analysis.ipynb` with `landcover_buidings_wrangling.py` containing the helper functions
 - all vector datasets are aggregated to 30 meters Landsat 8 resolution to ensure further combined processing
