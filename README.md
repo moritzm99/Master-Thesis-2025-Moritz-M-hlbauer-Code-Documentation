@@ -16,7 +16,7 @@
 
 ## Buildings and Landcover Processing
 
-<img src="images/background.png" alt="Description" width="400"/>
+<img src="Images/background.png" alt="Description" width="400"/>
 
 - the buildings and landcover processing can be executed running `landcover_buildings_analysis.ipynb` with `landcover_buidings_wrangling.py` containing the helper functions
 - the main final rasterized outputs are: **Built fraction**, **Mean Building Height** and **Dominant Landcover**
